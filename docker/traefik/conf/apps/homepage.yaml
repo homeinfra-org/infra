@@ -1,0 +1,13 @@
+http:
+  routers:
+    homepage:
+      entrypoints: websecure
+      rule: Host(`www.homeinfra.org`)
+      service: homepage
+      tls:
+        certresolver: cloudflare
+  services:
+    homepage:
+      loadbalancer:
+        servers:
+          - url: http://homepage:80

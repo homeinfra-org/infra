@@ -1,0 +1,13 @@
+http:
+  routers:
+    codeserver:
+      entrypoints: websecure
+      rule: Host(`test.homeinfra.net`)
+      service: codeserver
+      tls:
+        certresolver: cloudflare
+  services:
+    codeserver:
+      loadbalancer:
+        servers:
+          - url: http://1.1.1.1

@@ -1,0 +1,22 @@
+version: "2.0"
+services:
+  runner:
+    image: act_runner:latest
+    build:
+        context: .
+        dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./config.yaml:/config.yaml
+      - ./data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - CONFIG_FILE=/config.yaml
+      - GITEA_INSTANCE_URL=https://git.homeinfra.org
+      - GITEA_RUNNER_REGISTRATION_TOKEN=${TOKEN}
+      - GITEA_RUNNER_NAME=runner1
+      - GITEA_RUNNER_LABELS=linux
+    container_name: gitea_runner
+    env_file:
+      - .env
+    privileged: true

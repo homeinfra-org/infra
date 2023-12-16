@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  uptime-kuma:
+    image: 'louislam/uptime-kuma:1'
+    container_name: uptime-kuma
+    restart: always
+      #    ports:
+      #      - '3001:3001'
+    volumes:
+      - './data:/app/data'
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - traefik_default
+      - net
+networks:
+  traefik_default:
+    external: true
+  net:

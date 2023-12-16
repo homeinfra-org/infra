@@ -1,0 +1,44 @@
+
+global:
+  checkNewVersion: false
+  sendAnonymousUsage: false
+log:
+  filepath: /logs/log.json
+  format: json
+  level: DEBUG
+accesslog:
+  filepath: /logs/access.json
+
+api:
+  dashboard: true
+  insecure: true
+
+providers:
+  file:
+    directory: /conf/apps/
+    watch: true
+
+entrypoints:
+  gitssh:
+    address: :22
+  web:
+    address: :80
+  websecure:
+    address: :443
+
+tls:
+  stores:
+    default:
+      defaultCertResolver: cloudflare
+      defaultCertDomain:
+        main: homeinfra.org
+        sans: 
+          - "*.homeinfra.org"
+
+certificatesResolvers:
+  cloudflare:
+    acme:
+      dnsChallenge:
+        provider: cloudflare
+      email: admin@homeinfra.org
+      storage: /letsencrypt/acme.json

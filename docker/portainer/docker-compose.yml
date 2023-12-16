@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  portainer:
+    image: portainer/portainer-ce
+    container_name: portainer
+    volumes:
+      - ./data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    #    ports: 
+    #      - 3332:8000
+    #      - 3333:9000
+
+    networks:
+      - traefik_default
+      - net
+
+networks:
+  traefik_default:
+    external: true
+  net:

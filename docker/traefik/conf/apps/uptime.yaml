@@ -1,0 +1,13 @@
+http:
+  routers:
+    uptime-kuma:
+      entrypoints: websecure
+      rule: Host(`uptime.homeinfra.org`)
+      service: uptime-kuma
+      tls:
+        certresolver: cloudflare
+  services:
+    uptime-kuma:
+      loadbalancer:
+        servers:
+          - url: http://uptime-kuma:3001

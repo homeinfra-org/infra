@@ -1,0 +1,45 @@
+version: '3.3'
+services:
+
+  gitea:
+    image: gitea/gitea:1.21.1
+    container_name: gitea
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - DB_TYPE=postgres
+      - DB_HOST=db:5432
+      - DB_NAME=demo
+      - DB_USER=demo
+      - DB_PASSWD=demo
+    restart: always
+    networks:
+      - traefik_default
+      - gitea
+    volumes:
+      - ./data/gitea:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+        #    ports:
+      # - "3000:3000"
+      # - "2222:22"
+    depends_on:
+       - db
+
+  db:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=demo
+      - POSTGRES_PASSWORD=demo
+      - POSTGRES_DB=demo
+    networks:
+      - gitea
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+
+networks:
+  traefik_default:
+    external: true
+  gitea:
+

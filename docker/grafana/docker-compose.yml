@@ -1,0 +1,9 @@
+version: "3"
+services:
+  grafana:
+    ports:
+      - 3000:3000
+    container_name: grafana
+    image: grafana/grafana-enterprise:10.2.2-boringcrypto
+    volumns:
+      - ./data/grafana.ini:/etc/grafana/grafana.ini

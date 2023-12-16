@@ -1,0 +1,19 @@
+version: "2"
+services:
+
+  homepage:
+    image: nginx:1.18.0-alpine
+    #ports:
+    #  - "8080:80"
+    volumes:
+      - ./public_html:/usr/share/nginx/html:ro
+    environment:
+      - TZ=Asia/Shanghai
+    restart: always
+
+    networks:
+      - traefik_default
+
+networks:
+  traefik_default:
+    external: true
