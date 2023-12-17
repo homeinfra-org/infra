@@ -1,0 +1,13 @@
+http:
+  routers:
+    dockge:
+      entrypoints: websecure
+      rule: Host(`dockge.homeinfra.org`)
+      service: dockge
+      tls:
+        certresolver: cloudflare
+  services:
+    dockge:
+      loadbalancer:
+        servers:
+          - url: http://dockge:5001
