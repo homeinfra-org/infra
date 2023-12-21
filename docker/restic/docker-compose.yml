@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+
+  backup:
+    image: ghcr.io/lobaro/restic-backup-docker:master
+      #build: .
+    hostname: restic
+    volumes:
+      - /root:/data/root
+
+      - /tmp/restic.cache:/root/.cache/restic
+      - ./data/logs:/var/log/
+      - ./hooks:/hooks
+      - ./ignore.txt:/restic_ignore.txt
+    env_file:
+      - .env
+        #entrypoint: tail -f /dev/null
+    restart: unless-stopped
