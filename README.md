@@ -22,10 +22,18 @@
 
 - [Portainer](https://portainer.homeinfra.org)
   - Gitea OIDC
+- [Dockge](https://dockge.homeinfra.org)
 
 ### Observability
 
-- [Uptime](https://uptime.homeinfra.org)
+- [Uptime](https://uptime.homeinfra.org) [Status Page](https://uptime.homeinfra.org/status/main)
+  - All exposed apps
+  - Docker containers status
+  - DNS
+  - HTTPS Cert Expiration
+  - Backup
+  - Cron Jobs
+
 - Prometheus
 - Loki
 - Grafana
@@ -35,6 +43,8 @@
 ### backup
 
 - restic
+  - Backup to S3 (Backblaze)
+  - backup monitor
 
 ### Applications
 
@@ -46,4 +56,7 @@
 ### Integrations
 
 - [Github OAuth](https://github.com/settings/developers)
+- healthchecks.io
+- Backblaze S3 Bucket
+
 
