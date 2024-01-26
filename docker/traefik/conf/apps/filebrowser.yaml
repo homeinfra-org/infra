@@ -1,13 +1,13 @@
 http:
   routers:
-    codeserver:
+    file:
       entrypoints: websecure
-      rule: Host(`test.homeinfra.net`)
-      service: codeserver
+      rule: Host(`file.homeinfra.org`)
+      service: file
       tls:
         certresolver: cloudflare
   services:
-    codeserver:
+    file:
       loadbalancer:
         servers:
-          - url: http://1.1.1.1
+          - url: http://filebrowser

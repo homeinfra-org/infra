@@ -1,6 +1,5 @@
 version: "2"
 services:
-
   homepage:
     image: nginx:1.18.0-alpine
     #ports:
@@ -9,11 +8,9 @@ services:
       - ./public_html:/usr/share/nginx/html:ro
     environment:
       - TZ=Asia/Shanghai
-    restart: always
-
+    restart: unless-stopped
     networks:
       - traefik_default
-
 networks:
   traefik_default:
     external: true

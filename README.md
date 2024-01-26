@@ -1,5 +1,9 @@
 # Home Infra
 
+`Homeinfra` offers a strong, dependable, and easily replicable configuration for your homelab, incorporating vital elements like HTTPS, NAT traversal, Security, CI/CD pipelines, Cronjobs, DDNS, Docker management, Automatic Backup, and more.
+
+Currently, the setup is being managed through docker-compose. Although migrating to K8s or k3s is a potential consideration, it has not been implemented at this time.
+
 ## Modules
 
 ### Gateway & Security
@@ -40,7 +44,7 @@
 - msgpusher
 
 
-### backup
+### Backup
 
 - restic
   - Backup to S3 (Backblaze)

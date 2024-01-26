@@ -1,0 +1,1 @@
+export DOCKGE_STACKS_DIR=$(dirname "$PWD")

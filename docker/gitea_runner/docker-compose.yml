@@ -3,8 +3,8 @@ services:
   runner:
     image: act_runner:latest
     build:
-        context: .
-        dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
     volumes:
       - ./config.yaml:/config.yaml
@@ -13,10 +13,11 @@ services:
     environment:
       - CONFIG_FILE=/config.yaml
       - GITEA_INSTANCE_URL=https://git.homeinfra.org
-      - GITEA_RUNNER_REGISTRATION_TOKEN=${TOKEN}
+      - GITEA_RUNNER_REGISTRATION_TOKEN=${GITEA_RUNNER_REGISTRATION_TOKEN}
       - GITEA_RUNNER_NAME=runner1
       - GITEA_RUNNER_LABELS=linux
     container_name: gitea_runner
     env_file:
       - .env
-    privileged: true
+    privileged: false
+networks: {}

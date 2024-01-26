@@ -10,4 +10,5 @@ http:
     dockge:
       loadbalancer:
         servers:
-          - url: http://dockge:5001
+          # - url: http://dockge:5001
+          - url: http://dockge-oauth

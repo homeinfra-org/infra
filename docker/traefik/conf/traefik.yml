@@ -25,6 +25,12 @@ entrypoints:
     address: :80
   websecure:
     address: :443
+    http:
+      tls:
+        domains:
+          - main: homeinfra.org
+            sans: "*.homeinfra.org"
+
 
 tls:
   stores:

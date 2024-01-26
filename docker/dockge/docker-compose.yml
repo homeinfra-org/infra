@@ -3,13 +3,12 @@ services:
   dockge:
     image: louislam/dockge:1
     restart: unless-stopped
-      #    ports:
-      # Host Port : Container Port
-      # - 5001:5001
+    # ports:
+    #   - 5001:5001
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./data:/app/data
-        
+      
       # If you want to use private registries, you need to share the auth file with Dockge:
       # - /root/.docker/:/root/.docker
 
@@ -17,12 +16,26 @@ services:
       # ⚠️ READ IT CAREFULLY. If you did it wrong, your data could end up writing into a WRONG PATH.
       # ⚠️ 1. FULL path only. No relative path (MUST)
       # ⚠️ 2. Left Stacks Path === Right Stacks Path (MUST)
-      - /root/homeinfra/docker:/root/homeinfra/docker
+      - ${DOCKGE_STACKS_DIR:-}:${DOCKGE_STACKS_DIR:-}
     environment:
       # Tell Dockge where is your stacks directory
-      - DOCKGE_STACKS_DIR=/root/homeinfra/docker
+      - DOCKGE_STACKS_DIR=${DOCKGE_STACKS_DIR:-}
+    networks:
+      - traefik_default
 
 
+  dockge-oauth:
+    image: quay.io/oauth2-proxy/oauth2-proxy:v7.5.1
+    command: --config /oauth2-proxy.cfg
+    hostname: dockge-oauth2-proxy
+    volumes:
+      - "./oauth2-proxy.cfg:/oauth2-proxy.cfg"
+    restart: unless-stopped
+    
+    external_links:
+      - "traefik:git.homeinfra.org"
+    env_file:
+      - .env
     networks:
       - traefik_default
 

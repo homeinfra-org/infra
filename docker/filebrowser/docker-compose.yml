@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  filebrowser:
+    volumes:
+      - ./data/srv:/srv
+      - ./data/database:/database
+      - ./config.json:/.filebrowser.json
+    # ports:
+    #   - 8080:80
+    image: filebrowser/filebrowser:v2.26.0-s6
+    restart: unless-stopped
+    networks:
+      - traefik_default
+networks:
+  traefik_default:
+    external: true

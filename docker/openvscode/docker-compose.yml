@@ -1,0 +1,42 @@
+version: "2.1"
+services:
+  openvscode-server:
+    image: linuxserver/openvscode-server:1.85.1
+    container_name: openvscode-server
+    user: 0:0
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Etc/UTC
+      - CONNECTION_TOKEN=${CONNECTION_TOKEN} #optional
+      - CONNECTION_SECRET=${CONNECTION_SECRET} #optional
+      - SUDO_PASSWORD=${SUDO_PASSWORD} #optional
+      - SUDO_PASSWORD_HASH=${SUDO_PASSWORD_HASH} #optional
+    volumes:
+      - ../..:/infra
+    env_file:
+      - .env
+    #ports:
+    #  - 3000:3000
+    restart: unless-stopped
+    networks:
+      - traefik_default
+
+
+  openvscode-oauth:
+    image: quay.io/oauth2-proxy/oauth2-proxy:v7.5.1
+    command: --config /oauth2-proxy.cfg
+    hostname: openvscode-oauth2-proxy
+    volumes:
+      - "./oauth2-proxy.cfg:/oauth2-proxy.cfg"
+    restart: unless-stopped
+    
+    external_links:
+      - "traefik:git.homeinfra.org"
+    networks:
+      - traefik_default
+    env_file:
+      - .env
+networks:
+  traefik_default:
+    external: true

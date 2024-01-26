@@ -1,0 +1,15 @@
+http:
+  routers:
+    openvscode:
+      entrypoints: websecure
+      rule: Host(`code.homeinfra.org`)
+      service: openvscode
+      tls:
+        certresolver: cloudflare
+  services:
+    openvscode:
+      loadbalancer:
+        servers:
+          - url: http://openvscode-oauth
+#          - url: http://openvscode-server:3000
+
