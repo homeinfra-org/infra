@@ -19,9 +19,9 @@ services:
       - ./data/gitea:/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-    # ports:
+    ports:
     #   - "3000:3000"
-    #   - "2222:22"
+      - "22:22"
     depends_on:
       - db
     env_file:

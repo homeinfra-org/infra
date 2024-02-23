@@ -1,0 +1,53 @@
+*.{$BASE_DOMAIN} {$BASE_DOMAIN} {
+
+  log
+
+  tls {
+     dns cloudflare {env.CLOUDFLARE_DNS_API_TOKEN}
+  }
+
+  @gitea host git.{$BASE_DOMAIN}
+  handle @gitea {
+    reverse_proxy http://gitea:3000
+    handle /api/actions/runner.v1.RunnerService/FetchTask {
+      skip_log
+    }
+  }
+
+  @homepagewww host www.{$BASE_DOMAIN} {$BASE_DOMAIN}
+  handle @homepagewww {
+    reverse_proxy http://homepage:80
+  }
+
+  @openvscode host code.{$BASE_DOMAIN}
+  handle @openvscode {
+    # http://openvscode-server:3000
+    reverse_proxy http://openvscode-oauth
+  }
+
+  @uptimekuma host uptime.{$BASE_DOMAIN}
+  handle @uptimekuma {
+    reverse_proxy http://uptime-kuma:3001
+  }
+
+  @dockge host dockge.{$BASE_DOMAIN}
+  handle @dockge {
+    # http://dockge:5001
+    reverse_proxy http://dockge-oauth
+  }
+
+  @filebrowser host file.{$BASE_DOMAIN}
+  handle @filebrowser {
+    reverse_proxy http://filebrowser
+  }
+  
+  @grafana host grafana.{$BASE_DOMAIN}
+  handle @grafana {
+    reverse_proxy http://grafana:3000
+  }
+
+  @homeassistant host assistant.{$BASE_DOMAIN}
+  handle @homeassistant {
+    reverse_proxy http://home-assistant:8123
+  }
+}

@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  caddy:
+    image: homeinfra/caddy
+    build: .
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./data:/data/caddy
+    env_file:
+      - .env
+    networks:
+      - traefik_default
+      - internet
+
+networks:
+  traefik_default:
+    external: true
+  internet:
+  

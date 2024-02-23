@@ -33,7 +33,7 @@ services:
     restart: unless-stopped
     
     external_links:
-      - "traefik:git.homeinfra.org"
+      - "caddy:git.homeinfra.org"
     env_file:
       - .env
     networks:
