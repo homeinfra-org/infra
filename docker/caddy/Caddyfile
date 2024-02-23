@@ -10,8 +10,8 @@
   handle @gitea {
     reverse_proxy http://gitea:3000
     handle /api/actions/runner.v1.RunnerService/FetchTask {
-    	skip_log
-	  }
+      skip_log
+    }
   }
 
   @homepagewww host www.{$BASE_DOMAIN} {$BASE_DOMAIN}
