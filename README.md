@@ -18,9 +18,6 @@ Currently, the setup is being managed through docker-compose. Although migrating
 ---
 
 
-
-
-
 <table>
   <tr>
     <td><img src="images/actions.png"></td>
@@ -99,6 +96,9 @@ Currently, the setup is being managed through docker-compose. Although migrating
 - healthchecks.io
 - Backblaze S3 Bucket
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=homeinfra-org/infra&type=Date)](https://star-history.com/#homeinfra-org/infra&Date)
 
 
 
