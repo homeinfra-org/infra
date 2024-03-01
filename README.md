@@ -37,14 +37,18 @@ Currently, the setup is being managed through docker-compose. Although migrating
 </table>
 
 
+## Related Projects
+
+<a href='https://github.com/NoCLin/LightMirrors/'><img src='https://img.shields.io/badge/Light-Mirrors-green'></a>
+
 ## Modules
 
 ### Gateway & Security
 
-- Traefik (*.homeinfra.org)
-  - Automatic HTTPS certificate by Let's Encrypt with DNS-01 challenge (Cloudflare)
-- SafeLine
-- FRP
+- [x] Caddy
+  - Automatic HTTPS certificate (*.homeinfra.org) by Let's Encrypt with DNS-01 challenge (Cloudflare)
+- [ ] SafeLine
+- [ ] FRP
 
 ### Devops
 
@@ -57,13 +61,13 @@ Currently, the setup is being managed through docker-compose. Although migrating
 
 ### Docker Management
 
-- [Portainer](https://portainer.homeinfra.org)
-  - Gitea OIDC
+- ~[Portainer](https://portainer.homeinfra.org)~
+  - ~Gitea OIDC~
 - [Dockge](https://dockge.homeinfra.org)
 
 ### Observability
 
-- [Uptime](https://uptime.homeinfra.org) [Status Page](https://uptime.homeinfra.org/status/main)
+- [x] [Uptime](https://uptime.homeinfra.org) [Status Page](https://uptime.homeinfra.org/status/main)
   - All exposed apps
   - Docker containers status
   - DNS
@@ -71,37 +75,32 @@ Currently, the setup is being managed through docker-compose. Although migrating
   - Backup
   - Cron Jobs
 
-- Prometheus
-- Loki
-- Grafana
-- msgpusher
+- [ ] Prometheus
+- [ ] Loki
+- [ ] Grafana
+- [ ] msgpusher
 
 
 ### Backup
 
 - restic
   - Backup to S3 (Backblaze)
-  - backup monitor
+  - Backup monitor
 
 ### Applications
 
-- File
-- Music
-- Photo
-- Movie
+- [x] File
+- [ ] Music
+- [ ] Photo
+- [ ] Movie
 
 ### Integrations
 
-- [Github OAuth](https://github.com/settings/developers)
-- healthchecks.io
-- Backblaze S3 Bucket
+- [x] [Github OAuth](https://github.com/settings/developers)
+- [ ] healthchecks.io
+- [x] Backblaze S3 Bucket
 
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=homeinfra-org/infra&type=Date)](https://star-history.com/#homeinfra-org/infra&Date)
 
-
-
-## Related Projects
-
-<a href='https://github.com/NoCLin/LightMirrors/'><img src='https://img.shields.io/badge/Light-Mirrors-green'></a>
