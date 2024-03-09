@@ -17,6 +17,17 @@ Currently, the setup is being managed through docker-compose. Although migrating
 
 ---
 
+## Related Projects
+
+<a href='https://github.com/NoCLin/LightMirrors/'><img src='https://img.shields.io/badge/Light-Mirrors-green'></a>
+
+*🎉 We're providing a **free** subdomain for your Homelab.*
+
+Please refer to https://github.com/homeinfra-org/.homeinfra.org for more details.
+
+
+---
+
 
 <table>
   <tr>
@@ -36,10 +47,6 @@ Currently, the setup is being managed through docker-compose. Although migrating
   </tr>
 </table>
 
-
-## Related Projects
-
-<a href='https://github.com/NoCLin/LightMirrors/'><img src='https://img.shields.io/badge/Light-Mirrors-green'></a>
 
 ## Modules
 
